@@ -98,6 +98,4 @@
                 app:layout_constraintTop_toTopOf="@+id/textView" />
         </LinearLayout>
     </ScrollView>
-
-
 </LinearLayout>
