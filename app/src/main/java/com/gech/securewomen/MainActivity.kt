@@ -18,23 +18,34 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val mypref = getSharedPreferences("mypref", MODE_PRIVATE)
 
-        Log.i("MainActivity","App was opened !")
-        Toast.makeText(this,"Don't Be Scared You are safe now !!!",Toast.LENGTH_LONG).show()
+        val name = mypref.getString("name",null)
+        if (name == null){
+            setContentView(R.layout.activity_main)
 
-        editTextName = findViewById(R.id.editTextName)
-        editTextNumone = findViewById(R.id.editTextNumone)
-        editTextNumtwo = findViewById(R.id.editTextNumtwo)
-        editTextNumthree = findViewById(R.id.editTextNumThree)
-        editTextNumfour = findViewById(R.id.editTextNumfour)
-        editTextNumfive = findViewById(R.id.editTextNumfive)
+            Log.i("MainActivity","App was opened !")
+            Toast.makeText(this,"Don't Be Scared You are safe now !!!".plus(name),Toast.LENGTH_LONG).show()
 
-        retrieveData()
+            editTextName = findViewById(R.id.editTextName)
+            editTextNumone = findViewById(R.id.editTextNumone)
+            editTextNumtwo = findViewById(R.id.editTextNumtwo)
+            editTextNumthree = findViewById(R.id.editTextNumThree)
+            editTextNumfour = findViewById(R.id.editTextNumfour)
+            editTextNumfive = findViewById(R.id.editTextNumfive)
 
-        findViewById<Button>(R.id.button).setOnClickListener {
-            saveData()
+            retrieveData()
+
+            findViewById<Button>(R.id.button).setOnClickListener {
+                saveData()
+            }
+        }else{
+            setContentView(R.layout.activity_afterregister)
+
+            Log.i("AfterRegisterActivity","App was opened !")
+            Toast.makeText(this,"Don't Be Scared You are safe now !!!!".plus(name),Toast.LENGTH_LONG).show()
         }
+
     }
 
     private fun retrieveData(){
