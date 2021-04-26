@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SecureWomen</string>
     <string name="savebtn">Save</string>
+    <string name="headerParagraph">Women’s security is a critical issue in today’s world and it’s very much needed for every individual to be acting over such an issue. The primary issue is the handling of these cases by the police lies in constraints preventing them from responding quickly to calls of distress.</string>
 </resources>
