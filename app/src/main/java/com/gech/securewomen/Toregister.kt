@@ -1,10 +1,10 @@
 package com.gech.securewomen
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class Toregister : AppCompatActivity() {
 

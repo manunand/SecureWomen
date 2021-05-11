@@ -7,10 +7,18 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvGpsLatitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:padding="25dp"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="187dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <TextView
+        android:id="@+id/tvGpsLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:padding="25dp"
         android:textAlignment="center"
         tools:layout_editor_absoluteX="187dp"
