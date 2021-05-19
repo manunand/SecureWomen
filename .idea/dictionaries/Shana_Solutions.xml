@@ -2,17 +2,25 @@
   <dictionary name="Shana Solutions">
     <words>
       <w>buttontoregisterpage</w>
+      <w>gech</w>
       <w>mypref</w>
       <w>numfive</w>
       <w>numfour</w>
       <w>numone</w>
       <w>numthree</w>
       <w>numtwo</w>
+      <w>permmission</w>
       <w>savebtn</w>
       <w>savedata</w>
       <w>textnumone</w>
       <w>textview</w>
       <w>toregister</w>
+      <w>viewname</w>
+      <w>viewnumfive</w>
+      <w>viewnumfour</w>
+      <w>viewnumone</w>
+      <w>viewnumthree</w>
+      <w>viewnumtwo</w>
     </words>
   </dictionary>
 </component>

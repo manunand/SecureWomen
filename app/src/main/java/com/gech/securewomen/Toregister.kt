@@ -1,5 +1,6 @@
 package com.gech.securewomen
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -92,5 +93,8 @@ class Toregister : AppCompatActivity() {
         editor.apply()
 
         Toast.makeText(this,"Data Saved", Toast.LENGTH_LONG).show()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -23,5 +23,5 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textAlignment="center"
-        android:text="Welcome to Secure Women App" />
+        android:text="Welcome to Secure Women App By GECH Students" />
 </LinearLayout>

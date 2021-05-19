@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -24,6 +25,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var editTextNumfour : EditText
     lateinit var editTextNumfive : EditText
 
+    lateinit var TextViewname: TextView
+    lateinit var TextViewnumone : TextView
+    lateinit var TextViewnumtwo : TextView
+    lateinit var TextViewnumthree : TextView
+    lateinit var TextViewnumfour : TextView
+    lateinit var TextViewnumfive : TextView
+
     private lateinit var textview:TextView
     private lateinit var textview2:TextView
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -38,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             setContentView(R.layout.activity_main)
 
             Log.i("MainActivity","App was opened !")
-            Toast.makeText(this,"Don't Be Scared You are safe now !!!".plus(name),Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"Don't Be Scared You are safe now 1234565 !!!".plus(name),Toast.LENGTH_LONG).show()
 
 
             findViewById<Button>(R.id.buttontoregisterpage).setOnClickListener {
@@ -55,20 +63,48 @@ class MainActivity : AppCompatActivity() {
             textview2 = findViewById(R.id.tvGpsLongitude)
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
+            val mypref = getSharedPreferences("mypref", MODE_PRIVATE)
+
+            val name = mypref.getString("name","")
+            val num1 = mypref.getString("num1","")
+            val num2 = mypref.getString("num2","")
+            val num3 = mypref.getString("num3","")
+            val num4 = mypref.getString("num4","")
+            val num5 = mypref.getString("num5","")
+
+
+            TextViewname = findViewById(R.id.textViewname)
+            TextViewnumone = findViewById(R.id.textViewnumone)
+            TextViewnumtwo = findViewById(R.id.textViewnumtwo)
+            TextViewnumthree = findViewById(R.id.textViewnumthree)
+            TextViewnumfour = findViewById(R.id.textViewnumfour)
+            TextViewnumfive = findViewById(R.id.textViewnumfive)
+
+
+            TextViewname.setText(name)
+            TextViewnumone.setText(num1)
+            TextViewnumtwo.setText(num2)
+            TextViewnumthree.setText(num3)
+            TextViewnumfour.setText(num4)
+            TextViewnumfive.setText(num5)
+
             checkPermissions()
         }
 
     }
 
     private fun checkPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),1)
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.SEND_SMS),1)
         }else{
             getLastLocation()
         }
     }
 
-    fun getLastLocation() {
+    private fun getLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -89,6 +125,26 @@ class MainActivity : AppCompatActivity() {
                 textview.text = "Latitude : $latitude"
                 textview2.text = "Longitude : $longitude"
 
+                val mypref = getSharedPreferences("mypref", MODE_PRIVATE)
+
+                val num1 = mypref.getString("num1","")
+                val num2 = mypref.getString("num2","")
+                val num3 = mypref.getString("num3","")
+                val num4 = mypref.getString("num4","")
+                val num5 = mypref.getString("num5","")
+
+                var obj=SmsManager.getDefault()
+
+                obj.sendTextMessage("$num1",
+                    null,"$latitude $longitude ",null,null)
+                obj.sendTextMessage("$num2",
+                    null,"$latitude $longitude",null,null)
+                obj.sendTextMessage("$num3",
+                    null,"$latitude $longitude",null,null)
+                obj.sendTextMessage("$num4",
+                    null,"$latitude $longitude",null,null)
+                obj.sendTextMessage("$num5",
+                    null,"$latitude $longitude",null,null)
 
             }
         }
