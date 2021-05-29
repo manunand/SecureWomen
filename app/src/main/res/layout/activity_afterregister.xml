@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
 
     <TextView
         android:id="@+id/tvGpsLatitude"
@@ -28,25 +29,37 @@
         android:id="@+id/textViewname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/textViewnumone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/textViewnumtwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/textViewnumthree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/textViewnumfour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/textViewnumfive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/editdetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Details" />
+
 
 </LinearLayout>

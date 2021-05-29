@@ -54,7 +54,9 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }else{
+
             setContentView(R.layout.activity_afterregister)
+
 
             Log.i("AfterRegisterActivity","App was opened !")
             Toast.makeText(this,"Don't Be Scared You are safe now !!!!".plus(name),Toast.LENGTH_LONG).show()
@@ -89,9 +91,17 @@ class MainActivity : AppCompatActivity() {
             TextViewnumfive.setText(num5)
 
             checkPermissions()
+
+            findViewById<Button>(R.id.editdetails).setOnClickListener {
+                val intent = Intent(this, EditDetails::class.java)
+                startActivity(intent)
+            }
+
         }
 
     }
+
+
 
     private fun checkPermissions() {
         if (ContextCompat.checkSelfPermission(this,
@@ -136,15 +146,15 @@ class MainActivity : AppCompatActivity() {
                 var obj=SmsManager.getDefault()
 
                 obj.sendTextMessage("$num1",
-                    null,"$latitude $longitude ",null,null)
-                obj.sendTextMessage("$num2",
+                    null,"http://maps.google.com/maps?q=$latitude,$longitude",null,null)
+                /*obj.sendTextMessage("$num2",
                     null,"$latitude $longitude",null,null)
                 obj.sendTextMessage("$num3",
                     null,"$latitude $longitude",null,null)
                 obj.sendTextMessage("$num4",
                     null,"$latitude $longitude",null,null)
                 obj.sendTextMessage("$num5",
-                    null,"$latitude $longitude",null,null)
+                    null,"$latitude $longitude",null,null)*/
 
             }
         }
