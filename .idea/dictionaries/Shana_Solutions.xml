@@ -2,18 +2,29 @@
   <dictionary name="Shana Solutions">
     <words>
       <w>buttontoregisterpage</w>
+      <w>cardviewcallfirstperson</w>
+      <w>cardviewcallmedicalemergency</w>
+      <w>cardviewcallpolice</w>
+      <w>cardviewcallwomenhelpline</w>
+      <w>cardviewedit</w>
       <w>editdetails</w>
       <w>gech</w>
       <w>mypref</w>
+      <w>namelayput</w>
       <w>numfive</w>
+      <w>numfivelayput</w>
       <w>numfour</w>
+      <w>numfourlayput</w>
       <w>numone</w>
+      <w>numonelayput</w>
       <w>numthree</w>
       <w>numtwo</w>
+      <w>numtwolayput</w>
       <w>permmission</w>
       <w>savebtn</w>
       <w>savedata</w>
       <w>textnumone</w>
+      <w>textperson</w>
       <w>textview</w>
       <w>toregister</w>
       <w>viewname</w>
@@ -22,6 +33,7 @@
       <w>viewnumone</w>
       <w>viewnumthree</w>
       <w>viewnumtwo</w>
+      <w>yhreelayput</w>
     </words>
   </dictionary>
 </component>

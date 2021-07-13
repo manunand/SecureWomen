@@ -3,18 +3,18 @@ package com.gech.securewomen
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.telephony.SmsManager
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var TextViewnumthree : TextView
     lateinit var TextViewnumfour : TextView
     lateinit var TextViewnumfive : TextView
+
+    lateinit var toggleButton: ToggleButton
 
     private lateinit var textview:TextView
     private lateinit var textview2:TextView
@@ -65,6 +67,14 @@ class MainActivity : AppCompatActivity() {
             textview2 = findViewById(R.id.tvGpsLongitude)
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.SEND_SMS,Manifest.permission.CALL_PHONE),1)
+            }
+
             val mypref = getSharedPreferences("mypref", MODE_PRIVATE)
 
             val name = mypref.getString("name","")
@@ -81,6 +91,7 @@ class MainActivity : AppCompatActivity() {
             TextViewnumthree = findViewById(R.id.textViewnumthree)
             TextViewnumfour = findViewById(R.id.textViewnumfour)
             TextViewnumfive = findViewById(R.id.textViewnumfive)
+            toggleButton = findViewById(R.id.toggleButton6)
 
 
             TextViewname.setText(name)
@@ -90,13 +101,35 @@ class MainActivity : AppCompatActivity() {
             TextViewnumfour.setText(num4)
             TextViewnumfive.setText(num5)
 
-            checkPermissions()
 
-            findViewById<Button>(R.id.editdetails).setOnClickListener {
+            toggleButton.setOnClickListener {
+                if (toggleButton.text.toString() == "ON"){
+                    checkPermissions()
+                }else{
+                    Toast.makeText(this, "SMS Sending Stopped", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            findViewById<CardView>(R.id.cardviewedit).setOnClickListener {
                 val intent = Intent(this, EditDetails::class.java)
                 startActivity(intent)
             }
 
+            findViewById<CardView>(R.id.cardviewcallfirstperson).setOnClickListener {
+                startActivity(Intent(Intent.ACTION_CALL, Uri.parse("tel:$num1")))
+            }
+
+            findViewById<CardView>(R.id.cardviewcallpolice).setOnClickListener {
+                startActivity(Intent(Intent.ACTION_CALL, Uri.parse("tel:12")))
+            }
+
+            findViewById<CardView>(R.id.cardviewcallmedicalemergency).setOnClickListener {
+                startActivity(Intent(Intent.ACTION_CALL, Uri.parse("tel:34")))
+            }
+
+            findViewById<CardView>(R.id.cardviewcallwomenhelpline).setOnClickListener {
+                startActivity(Intent(Intent.ACTION_CALL, Uri.parse("tel:56")))
+            }
         }
 
     }
@@ -106,16 +139,17 @@ class MainActivity : AppCompatActivity() {
     private fun checkPermissions() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
-                Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED){
+                Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.SEND_SMS),1)
+                Manifest.permission.SEND_SMS,Manifest.permission.CALL_PHONE),1)
         }else{
             getLastLocation()
         }
     }
 
     private fun getLastLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -143,19 +177,28 @@ class MainActivity : AppCompatActivity() {
                 val num4 = mypref.getString("num4","")
                 val num5 = mypref.getString("num5","")
 
-                var obj=SmsManager.getDefault()
+                thread {
+                    while (true){
+                        if (toggleButton.text.toString() == "ON"){
+                            var obj= SmsManager.getDefault()
 
-                obj.sendTextMessage("$num1",
-                    null,"http://maps.google.com/maps?q=$latitude,$longitude",null,null)
-                /*obj.sendTextMessage("$num2",
-                    null,"$latitude $longitude",null,null)
-                obj.sendTextMessage("$num3",
-                    null,"$latitude $longitude",null,null)
-                obj.sendTextMessage("$num4",
-                    null,"$latitude $longitude",null,null)
-                obj.sendTextMessage("$num5",
-                    null,"$latitude $longitude",null,null)*/
-
+                            obj.sendTextMessage("$num1",
+                                null,"http://maps.google.com/maps?q=$latitude,$longitude",null,null)
+                            /*obj.sendTextMessage("$num2",
+                                null,"http://maps.google.com/maps?q=$latitude,$longitude",null,null)
+                            obj.sendTextMessage("$num3",
+                                null,"http://maps.google.com/maps?q=$latitude,$longitude",null,null)
+                            obj.sendTextMessage("$num4",
+                                null,"http://maps.google.com/maps?q=$latitude,$longitude",null,null)
+                            obj.sendTextMessage("$num5",
+                                null,"http://maps.google.com/maps?q=$latitude,$longitude",null,null)*/
+                            Thread.sleep(30000)
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                }
             }
         }
     }
@@ -164,7 +207,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == 1){
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(this,"PERMMISSION GRANTED",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"PERMISSION GRANTED",Toast.LENGTH_LONG).show()
                     getLastLocation()
                 }
                 else{

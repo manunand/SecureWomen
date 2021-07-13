@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/purple_500"
     tools:context=".Toregister">
 
     <TextView
@@ -27,7 +28,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" >
 
             <TextView
                 android:id="@+id/textView"
@@ -42,67 +44,191 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
                 app:layout_constraintVertical_bias="0.57" />
 
-            <EditText
-                android:id="@+id/editTextName"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextNamelayput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter Your Name"
-                android:inputType="textPersonName" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:boxStrokeColor="@color/design_default_color_primary_dark"
+                app:counterEnabled="true"
+                app:counterMaxLength="25"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperText="Required *"
+                app:helperTextTextColor="@color/red"
+                app:prefixTextColor="@color/purple_500"
+                app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-            <EditText
-                android:id="@+id/editTextNumone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter Number One"
-                android:inputType="text|number" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:maxLength="25" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/editTextNumtwo"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextNumonelayput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter Number Two"
-                android:inputType="text|number" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:helperText="Required *"
+                app:helperTextTextColor="@color/red"
+                app:startIconDrawable="@drawable/ic_baseline_call_24"
+                app:counterEnabled="true"
+                app:boxStrokeColor="@color/design_default_color_primary_dark"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:prefixText="+91"
+                app:prefixTextColor="@color/purple_500"
+                >
 
-            <EditText
-                android:id="@+id/editTextNumThree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter Number Three"
-                android:inputType="text|number" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNumone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="First Number"
+                    android:maxLength="10"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/editTextNumfour"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextNumtwolayput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter Number Four"
-                android:inputType="text|number" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:helperText="Required *"
+                app:helperTextTextColor="@color/red"
+                app:startIconDrawable="@drawable/ic_baseline_call_24"
+                app:counterEnabled="true"
+                app:boxStrokeColor="@color/design_default_color_primary_dark"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:prefixText="+91"
+                app:prefixTextColor="@color/purple_500"
+                >
 
-            <EditText
-                android:id="@+id/editTextNumfive"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNumtwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Second Number"
+                    android:maxLength="10"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextNumYhreelayput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter Number Five"
-                android:inputType="text|number" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:helperText="Required *"
+                app:helperTextTextColor="@color/red"
+                app:startIconDrawable="@drawable/ic_baseline_call_24"
+                app:counterEnabled="true"
+                app:boxStrokeColor="@color/design_default_color_primary_dark"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:prefixText="+91"
+                app:prefixTextColor="@color/purple_500"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNumThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Third Number"
+                    android:maxLength="10"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextNumfourlayput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:helperText="Required *"
+                app:helperTextTextColor="@color/red"
+                app:startIconDrawable="@drawable/ic_baseline_call_24"
+                app:counterEnabled="true"
+                app:boxStrokeColor="@color/design_default_color_primary_dark"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:prefixText="+91"
+                app:prefixTextColor="@color/purple_500"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNumfour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fourth Number"
+                    android:maxLength="10"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextNumfivelayput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:helperText="Required *"
+                app:helperTextTextColor="@color/red"
+                app:startIconDrawable="@drawable/ic_baseline_call_24"
+                app:counterEnabled="true"
+                app:boxStrokeColor="@color/design_default_color_primary_dark"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:prefixText="+91"
+                app:prefixTextColor="@color/purple_500"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNumfive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fifth Number"
+                    android:maxLength="10"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:text="@string/savebtn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView" />
-
-
-
+                app:layout_constraintTop_toTopOf="@+id/textView"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:background="@drawable/custom_button" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
